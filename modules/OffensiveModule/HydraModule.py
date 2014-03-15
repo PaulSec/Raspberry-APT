@@ -10,9 +10,11 @@ targets = [Target("192.168.0.11", "22")]
 module = HydraModule()
 print module.execute("ssh", targets)
 '''
+
+
 class HydraModule:
 
-    def __init__(self, hydra_path = "hydra", login_dict = "/tmp/users.txt", pass_dict = "/tmp/pass.txt"):
+    def __init__(self, hydra_path="hydra", login_dict="/tmp/users.txt", pass_dict="/tmp/pass.txt"):
         self.hydra_path = hydra_path
         self.login_dict = login_dict
         self.pass_dict = pass_dict
@@ -29,5 +31,5 @@ class HydraModule:
             pattern = r"login: ([\w]+) \s+password: ([\w]+)"
             logins = re.findall(pattern, out)
             for login in logins:
-                res.append({"protocol":protocol, "ip":target.ip, "port":target.port, "user":login[0], "pass":login[1]})
+                res.append({"protocol": protocol, "ip": target.ip, "port": target.port, "user": login[0], "pass": login[1]})
         return res
