@@ -13,4 +13,4 @@ class HostDiscoveryModule(NmapHelper):
         command = command + "| awk '/Up/{print $2}'"
         res = super(HostDiscoveryModule, self).execute(command, True)
         # split the string with new line and delete the last one
-        print res
+        return res
