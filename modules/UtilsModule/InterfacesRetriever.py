@@ -8,7 +8,7 @@ import array
 
 class InterfacesRetriever(object):
     """
-        Internet Checker Main CLass
+        Interfaces retriever Main Class
     """
 
     _instance = None
