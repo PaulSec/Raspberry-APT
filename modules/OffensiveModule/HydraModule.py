@@ -1,10 +1,9 @@
+import sys
+sys.path.insert(0, '../../common/')
+
 import subprocess
 import re
-
-class Target:
-    def __init__(self, ip, port):
-        self.ip = str(ip)
-        self.port = str(port)
+from Target import *
 
 ''' Module example
 targets = [Target("192.168.0.11", "22")]
