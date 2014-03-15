@@ -22,4 +22,5 @@ for interface in interfaces:
     range_ip[3] = '0/24'
     range_ip = '.'.join(range_ip)
     host_discovery = HostDiscoveryModule(range_ip)
-    host_discovery.execute()
+    res = host_discovery.execute()
+    print res
