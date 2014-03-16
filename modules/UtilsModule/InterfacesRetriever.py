@@ -5,6 +5,7 @@ import fcntl
 import struct
 import array
 
+from Interface import *
 
 class InterfacesRetriever(object):
     """
@@ -48,13 +49,10 @@ class InterfacesRetriever(object):
 
     def get_up_interfaces(self):
         ifs = self.all_interfaces()
-        res = {}
+        res = []
         for i in ifs:
-            res[i[0]] = self.format_ip(i[1])
-
-        # deleting localhost (lo interface)
-        try:
-            del res['lo']
-        except:
-            pass
+            if i[0] != 'lo':
+                ip = self.format_ip(i[1])
+                iface = Interface(i[0], ip)
+                res.append(iface)
         return res
