@@ -18,4 +18,3 @@ class NmapHelper(object):
             for ip in out:
                 res.append(Host(ip))
         return res
-
