@@ -26,3 +26,6 @@ class DiscoveryModule(object):
 
     def feed(self, ifs):
         self.ifs.extend(ifs)
+
+    def clearIfs(self):
+        self.ifs = []
