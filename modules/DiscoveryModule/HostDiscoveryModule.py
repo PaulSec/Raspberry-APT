@@ -17,4 +17,4 @@ class HostDiscoveryModule(NmapHelper, DiscoveryModule):
             command = command + "| awk '/Up/{print $2}'"
             hosts = super(HostDiscoveryModule, self).execute(command, True)
             super(HostDiscoveryModule, self).addHosts(hosts)
-            super(HostDiscoveryModule, self).clearIfs()
+        super(HostDiscoveryModule, self).clearIfs()
