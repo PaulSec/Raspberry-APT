@@ -18,7 +18,7 @@ class FingerPrintingModule(object):
     def addTarget(self, target):
         self.targets.append(target)
 
-    def addHosts(self, targets):
+    def addTargets(self, targets):
         self.targets.extend(targets)
 
     def getResults(self):
