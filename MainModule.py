@@ -16,18 +16,21 @@ from Target import *
 from InterfacesRetriever import *
 from InternetChecker import *
 
+
 def find_file(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
             return os.path.join(root, name)
 
+
 def load_module(module_name):
     file_path = find_file(module_name + ".py", "modules")
-    if file_path != None:
+    if file_path is not None:
         module = importlib.import_module(module_name)
         return getattr(module, module_name)
     print "Cannot find %s.py" % module_name
     return None
+
 
 def parse_workflows(file_name):
     flowname_regexp = r"\[WF=(\w+)\]"
@@ -41,13 +44,13 @@ def parse_workflows(file_name):
         if parsingType == "" or parsingType == "module":
             #Parsing flow name
             regexWf = re.search(flowname_regexp, line)
-            if regexWf != None:
+            if regexWf is not None:
                 parsingName = regexWf.group(1)
                 parsingType = "wf"
                 continue
             else:
                 regexModule = re.search(modulename_regexp, line)
-                if regexModule != None:
+                if regexModule is not None:
                     parsingName = regexModule.group(1)
                     parsingType = "module"
                     configs[parsingName] = {}
@@ -61,7 +64,7 @@ def parse_workflows(file_name):
             modules = []
             for modulename in modulenames:
                 module = load_module(modulename)
-                if module == None:
+                if module is None:
                     print "Cannot load module: %s for workflow %s" % (modulename, parsingName)
                     return None
                 modules.append((modulename, module))
@@ -89,7 +92,7 @@ if not os.path.isfile(cfg_file_name):
 
 flows, configs = parse_workflows(cfg_file_name)
 
-if flows == None:
+if flows is None:
     exit(0)
 print "[+] Config file loaded, %d flows found." % len(flows)
 
