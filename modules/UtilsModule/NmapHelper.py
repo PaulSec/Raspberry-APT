@@ -1,16 +1,21 @@
 import os
 
-nmap_location = "/home/paul/Perso/Hacking/tools/nmap/nmap"
+from Host import *
+
+nmap_location = "nmap"
 
 
 class NmapHelper(object):
 
     def execute(self, command, grepable=False):
         command = nmap_location + command
-        res = os.popen(command).read()
+        out = os.popen(command).read()
         # split the string with new line and delete the last one
+        res = []
         if (grepable):
-            res = res.split('\n')
-            res = res[:-1]
+            out = out.split('\n')
+            out = out[:-1]
+            for ip in out:
+                res.append(Host(ip))
         return res
 
