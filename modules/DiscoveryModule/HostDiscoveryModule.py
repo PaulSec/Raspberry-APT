@@ -16,5 +16,9 @@ class HostDiscoveryModule(NmapHelper, DiscoveryModule):
             command = " -sP " + range_ip + " -oG - "
             command = command + "| awk '/Up/{print $2}'"
             hosts = super(HostDiscoveryModule, self).execute(command, True)
-            super(HostDiscoveryModule, self).addHosts(hosts)
+
+            for host in hosts:
+                host = Host(host)
+                super(HostDiscoveryModule, self).addHost(host)
+
             super(HostDiscoveryModule, self).clearInterfaces()
