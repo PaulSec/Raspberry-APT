@@ -5,15 +5,15 @@ class DiscoveryModule(object):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        self.ifs = []
+        self.interfaces = []
         self.hosts = []
 
     @abstractmethod
     def execute(self):
         pass
 
-    def getIfs(self):
-        return self.ifs
+    def getInterfaces(self):
+        return self.interfaces
 
     def addHost(self, host):
         self.hosts.append(host)
@@ -24,8 +24,8 @@ class DiscoveryModule(object):
     def getResults(self):
         return self.hosts
 
-    def feed(self, ifs):
-        self.ifs.extend(ifs)
+    def feed(self, interfaces):
+        self.interfaces.extend(interfaces)
 
-    def clearIfs(self):
-        self.ifs = []
+    def clearInterfaces(self):
+        self.interfaces = []
