@@ -3,7 +3,7 @@ import sys
 sys.path.insert(0, '../../common/')
 from Host import *
 
-nmap_location = "~/Perso/Hacking/tools/nmap/nmap"
+nmap_location = "nmap"
 
 
 class NmapHelper(object):
