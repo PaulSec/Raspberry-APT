@@ -10,15 +10,15 @@ hydra_path = "hydra"
 
 
 class HydraModule(OffensiveModule):
-    def execute(self, protocol, targets):
+    def execute(self):
         res = list()
         for target in super(HydraModule, self).getTargets():
             args = [hydra_path,
                     target.ip,
                     target.protocol,
                     "-s", target.port,
-                    "-P", self.pass_dict,
-                    "-L", self.login_dict,
+                    "-P", "/tmp/pass.txt",
+                    "-L", "/tmp/usrs.txt",
                     "-e", "ns",
                     "-t", "10"]
             print args
