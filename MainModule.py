@@ -4,7 +4,9 @@ sys.path.insert(0, './modules/FingerprintingModule')
 sys.path.insert(0, './modules/MaintenanceModule')
 sys.path.insert(0, './modules/OffensiveModule')
 sys.path.insert(0, './modules/UtilsModule')
+sys.path.insert(0, './common/')
 
+from Interface import *
 from HostDiscoveryModule import *
 from InterfacesRetriever import *
 from InternetChecker import *
@@ -16,11 +18,11 @@ if (internet_checker.check_internet()):
 interfaces = InterfacesRetriever().get_up_interfaces()
 if (len(interfaces) > 0):
     print "[+] Seems that there are some up interface(s)"
-for interface in interfaces:
-    print "Interface : %s (%s) up." % (interface, interfaces[interface])
-    range_ip = interfaces[interface].split('.')
-    range_ip[3] = '0/24'
-    range_ip = '.'.join(range_ip)
-    host_discovery = HostDiscoveryModule(range_ip)
-    res = host_discovery.execute()
-    print res
+#for interface in interfaces:
+#    host_discovery = HostDiscoveryModule(range_ip)
+#    res = host_discovery.execute()
+#    print res
+discovery = HostDiscoveryModule()
+discovery.feed(interfaces)
+discovery.execute()
+hosts = discovery.getResults()
