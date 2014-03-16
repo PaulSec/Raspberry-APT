@@ -8,7 +8,13 @@ from Target import *
 
 class NmapHorizontalScanModule(NmapHelper, FingerPrintingModule):
 
-    port = '22'
+    port = ""
+
+    def loadConfig(self, config):
+        if "port" in config:
+            self.port = config["port"]
+        if "nmap_location" in config:
+            self.nmap_location = config["nmap_location"]
 
     def execute(self):
         for host in super(NmapHorizontalScanModule, self).getHosts():

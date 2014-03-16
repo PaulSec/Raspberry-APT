@@ -12,6 +12,10 @@ class DiscoveryModule(object):
     def execute(self):
         pass
 
+    @abstractmethod
+    def loadConfig(self, config):
+        pass
+
     def getInterfaces(self):
         return self.interfaces
 

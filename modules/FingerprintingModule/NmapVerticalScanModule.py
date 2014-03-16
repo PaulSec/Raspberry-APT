@@ -9,6 +9,10 @@ import re
 
 class NmapVerticalScanModule(NmapHelper, FingerPrintingModule):
 
+    def loadConfig(self, config):
+        if "nmap_location" in config:
+            self.nmap_location = config["nmap_location"]
+
     def execute(self):
         for host in super(NmapVerticalScanModule, self).getHosts():
             command = " -Pn -oG - " + host.ip

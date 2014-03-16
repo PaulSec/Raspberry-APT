@@ -7,6 +7,10 @@ from NmapHelper import *
 
 class HostDiscoveryModule(NmapHelper, DiscoveryModule):
 
+    def loadConfig(self, config):
+        if "nmap_location" in config:
+            self.nmap_location = config["nmap_location"]
+
     def execute(self):
         for iface in super(HostDiscoveryModule, self).getInterfaces():
             print "Interface : %s (%s) up." % (iface.ifname, iface.ip)

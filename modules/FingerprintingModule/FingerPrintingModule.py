@@ -12,6 +12,10 @@ class FingerPrintingModule(object):
     def execute(self):
         pass
 
+    @abstractmethod
+    def loadConfig(self, config):
+        pass
+
     def getHosts(self):
         return self.hosts
 

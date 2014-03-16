@@ -12,6 +12,10 @@ class OffensiveModule(object):
     def execute(self):
         pass
 
+    @abstractmethod
+    def loadConfig(self, config):
+        pass
+
     def getTargets(self):
         return self.targets
 
