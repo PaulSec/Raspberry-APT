@@ -24,7 +24,7 @@ class NmapHorizontalScanModule(NmapHelper, FingerPrintingModule):
                 port = port.split('/')[0]
                 service = res_command.split('//')[1]
                 target = Target(host.ip, port, service)
-                super(NmapVerticalScanModule, self).addTarget(target)
+                super(NmapHorizontalScanModule, self).addTarget(target)
 
     def setPort(self, port):
         self.port = port
